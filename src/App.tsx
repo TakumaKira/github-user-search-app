@@ -1,8 +1,13 @@
-import React from 'react';
+import ThemeWrapper from './contexts/themeContext';
+import Background from './components/Background';
 
 function App() {
   return (
-    <div></div>
+    <ThemeWrapper>
+      <Background>
+        
+      </Background>
+    </ThemeWrapper>
   );
 }
 
