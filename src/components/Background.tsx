@@ -1,7 +1,7 @@
 import { ThemeContext } from '../contexts/themeContext';
 import './Background.css';
 
-function Bg(props: any) {
+function Background(props: any) {
   return (
     <ThemeContext.Consumer>
       {({theme, toggleTheme}) =>
@@ -17,4 +17,4 @@ function Bg(props: any) {
   );
 }
 
-export default Bg;
+export default Background;
