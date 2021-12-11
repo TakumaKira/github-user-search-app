@@ -1,0 +1,10 @@
+{
+  "title": "devfinder",
+  "iconIds": {
+    "Company": "company",
+    "Location": "location",
+    "Moon": "moon",
+    "Search": "search",
+    "Sun": "sun"
+  }
+}

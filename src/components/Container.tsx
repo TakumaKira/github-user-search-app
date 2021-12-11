@@ -1,8 +1,8 @@
-import './Container.css';
+import styles from './Container.module.sass';
 
 function Container(props: any) {
   return (
-    <div className="Container">
+    <div className={styles.container}>
       {props.children}
     </div>
   );

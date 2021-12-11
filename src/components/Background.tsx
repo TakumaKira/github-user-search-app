@@ -1,19 +1,17 @@
+import React from 'react';
 import { ThemeContext } from '../contexts/themeContext';
-import './Background.css';
+import styles from './Background.module.sass';
 
 function Background(props: any) {
+  const { theme } = React.useContext(ThemeContext);
+
   return (
-    <ThemeContext.Consumer>
-      {({theme, toggleTheme}) =>
-        <div
-          className="background"
-          data-theme={theme}
-          onClick={toggleTheme}
-        >
-          {props.children}
-        </div>
-      }
-    </ThemeContext.Consumer>
+    <div
+      className={styles.background}
+      data-theme={theme}
+    >
+      {props.children}
+    </div>
   );
 }
 

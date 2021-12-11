@@ -1,0 +1,26 @@
+.container
+  display: flex
+  cursor: pointer
+  user-select: none
+
+  & > *
+    color: var(--color-medium)
+    fill: var(--color-medium)
+
+  &:hover > *
+    color: var(--color-strong)
+    fill: var(--color-strong)
+
+  &:hover[data-theme='dark'] > *
+    color: var(--light-grey-blue)
+    fill: var(--light-grey-blue)
+
+.text
+  font-family: var(--font-family)
+  font-size: 13px
+  font-weight: 700
+  margin-right: 16px
+
+.icon
+  width: 20px
+  height: 20px
