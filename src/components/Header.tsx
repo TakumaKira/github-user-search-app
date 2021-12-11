@@ -9,12 +9,12 @@ function Header() {
 
   return (
     <div className={styles.headerContainer}>
-      <span
+      <h1
         className={styles.title}
         data-theme={theme}
       >
         {title}
-      </span>
+      </h1>
       <ThemeToggleButton />
     </div>
   );

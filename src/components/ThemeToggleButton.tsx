@@ -18,9 +18,9 @@ function ThemeToggleButton() {
       data-theme={theme}
       onClick={toggleTheme}
     >
-      <span className={styles.text}>
+      <h4 className={styles.text}>
         {theme === ThemeType.Light ? ThemeLabel.Dark : ThemeLabel.Light}
-      </span>
+      </h4>
       <svg className={styles.icon}>
         <use xlinkHref={`${getIconUrl(theme === ThemeType.Light ? iconIds.Moon : iconIds.Sun)}`}></use>
       </svg>

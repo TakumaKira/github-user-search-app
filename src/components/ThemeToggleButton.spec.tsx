@@ -21,7 +21,7 @@ it(`should render "${ThemeLabel.Dark}" as button label when current theme is ${T
   act(() => {
     ReactDOM.render(<ThemeWrapper><ThemeToggleButton /></ThemeWrapper>, container);
   });
-  const label = container!.querySelector('span')!;
+  const label = container!.querySelector('.text')!;
   expect(label.textContent).toBe(ThemeLabel.Dark);
 });
 
@@ -29,7 +29,7 @@ it(`should render ${iconIds.Moon} icon when current theme is ${ThemeType.Light}`
   act(() => {
     ReactDOM.render(<ThemeWrapper><ThemeToggleButton /></ThemeWrapper>, container);
   });
-  const use = container!.querySelector('use')!;
+  const use = container!.querySelector('.icon')!.firstChild! as SVGUseElement;
   expect(use.getAttributeNS('http://www.w3.org/1999/xlink', 'href')).toBe(getIconUrl(iconIds.Moon));
   // TODO: Needs a check if the SVG is actually rendered
 });
@@ -38,8 +38,8 @@ it(`should render "${ThemeLabel.Light}" as button label when current theme is ${
   act(() => {
     ReactDOM.render(<ThemeWrapper><ThemeToggleButton /></ThemeWrapper>, container);
   });
-  const button = container!.querySelector('div')!;
-  const label = container!.querySelector('span')!;
+  const button = container!.querySelector('.container')!;
+  const label = container!.querySelector('.text')!;
   act(() => {
     button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
   });
@@ -50,11 +50,11 @@ it(`should render ${iconIds.Sun} icon when current theme is ${ThemeType.Dark}`, 
   act(() => {
     ReactDOM.render(<ThemeWrapper><ThemeToggleButton /></ThemeWrapper>, container);
   });
-  const button = container!.querySelector('div')!;
+  const button = container!.querySelector('.container')!;
   act(() => {
     button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
   });
-  const use = container!.querySelector('use')!;
+  const use = container!.querySelector('.icon')!.firstChild! as SVGUseElement;
   expect(use.getAttributeNS('http://www.w3.org/1999/xlink', 'href')).toBe(getIconUrl(iconIds.Sun));
   // TODO: Needs a check if the SVG is actually rendered
 });
