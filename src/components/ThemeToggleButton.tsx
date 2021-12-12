@@ -13,7 +13,7 @@ function ThemeToggleButton() {
   const { theme, toggleTheme } = React.useContext(ThemeContext);
 
   return (
-    <div
+    <button
       className={styles.container}
       data-theme={theme}
       onClick={toggleTheme}
@@ -24,7 +24,7 @@ function ThemeToggleButton() {
       <svg className={styles.icon}>
         <use xlinkHref={`${getIconUrl(theme === ThemeType.Light ? iconIds.Moon : iconIds.Sun)}`}></use>
       </svg>
-    </div>
+    </button>
   );
 }
 

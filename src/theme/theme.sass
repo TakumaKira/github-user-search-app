@@ -1,21 +1,23 @@
 :root
-  --background: #F6F8FF
+  // Only for light theme
+  --color-background: #F6F8FF
   --color-strong: #222731
   --color-normal: #2B3442
   --color-medium-strong: #4B6A9B
   --color-medium: #697C9A
-  --off-white: #FEFEFE
+  --color-off-white: #FEFEFE
 
-  --white: #FFFFFF
-  --blue: #0079FF
-  --light-blue: #60ABFF
-  --light-grey-blue: #90A4D4
-
-  --font-family: 'Space Mono', monospace
+  // Common theme
+  --color-white: #FFFFFF
+  --color-blue: #0079FF
+  --color-light-blue: #60ABFF
+  --color-light-grey-blue: #90A4D4
+  --color-red: #F74646
 
 [data-theme='dark']
-  --background: #141D2F
-  --dark-blue: #1E2A47
+  // Only for dark theme
+  --color-background: #141D2F
+  --color-dark-blue: #1E2A47
   --color-strong: #FFFFFF
   --color-normal: #FFFFFF
   --color-medium-strong: #FFFFFF
@@ -45,10 +47,19 @@ h3
   font-weight: 400
   font-size: 16px
   line-height: 24px
-  color: var(--blue)
+  color: var(--color-blue)
 
 h4
   font-weight: 400
   font-size: 13px
   line-height: 20px
   color: var(--color-medium-strong)
+
+button
+  color: var(--color-normal)
+
+input
+  color: var(--color-strong)
+
+  &::placeholder
+    color: var(--color-medium-strong)
