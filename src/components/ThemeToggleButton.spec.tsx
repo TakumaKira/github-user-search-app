@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import { act } from 'react-dom/test-utils';
 import { iconIds } from '../config.json';
-import ThemeWrapper, { ThemeType } from '../contexts/themeContext';
+import ThemeWrapper, { ThemeType } from '../contexts/ThemeContext';
 import getIconUrl from '../services/getIcon';
 import ThemeToggleButton, { ThemeLabel } from './ThemeToggleButton';
 

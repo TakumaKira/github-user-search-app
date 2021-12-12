@@ -1,6 +1,6 @@
 import React from 'react';
 import { title } from '../config.json';
-import { ThemeContext } from "../contexts/themeContext";
+import { ThemeContext } from '../contexts/ThemeContext';
 import styles from './Header.module.sass';
 import ThemeToggleButton from "./ThemeToggleButton";
 
