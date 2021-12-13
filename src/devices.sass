@@ -1,0 +1,12 @@
+$widthBreakpointMobileTablet: 600px
+$widthBreakpointTabletDesktop: 768px
+
+@mixin switchByScreenWidth($property, $mobileValue, $tabletValue, $desktopValue)
+  @media only screen and (max-width: $widthBreakpointMobileTablet)
+    #{$property}: $mobileValue
+
+  @media only screen and (min-width: $widthBreakpointMobileTablet)
+    #{$property}: $tabletValue
+
+  @media only screen and (min-width: $widthBreakpointTabletDesktop)
+    #{$property}: $desktopValue

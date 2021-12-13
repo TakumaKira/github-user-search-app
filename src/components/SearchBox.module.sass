@@ -1,25 +1,16 @@
+@import '/src/devices.sass'
+  
 .container
   display: flex
   align-items: center
   border-radius: 15px
   background: var(--color-off-white)
   box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567)
+  @include switchByScreenWidth(height, 60px, 60px, 69px)
 
   &[data-theme='dark']
     background: var(--color-dark-blue)
     box-shadow: none
-
-  /* Extra small devices (phones, 600px and down) */
-  @media only screen and (max-width: 600px)
-    height: 60px
-
-  /* Small devices (portrait tablets and large phones, 600px and up) */
-  @media only screen and (min-width: 600px)
-    height: 60px
-
-  /* Medium devices (landscape tablets, 768px and up) */
-  @media only screen and (min-width: 768px)
-    height: 69px
 
   & > *
     flex-shrink: 0
@@ -27,43 +18,15 @@
 
   .icon
     fill: var(--color-blue)
-
-    /* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px)
-      width: 20px
-      height: 20px
-      margin-left: 16px
-
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 600px)
-      width: 24px
-      height: 24px
-      margin-left: 16px
-
-    /* Medium devices (landscape tablets, 768px and up) */
-    @media only screen and (min-width: 768px)
-      width: 24px
-      height: 24px
-      margin-left: 32px
+    @include switchByScreenWidth(width, 20px, 24px, 24px)
+    @include switchByScreenWidth(height, 20px, 24px, 24px)
+    @include switchByScreenWidth(margin-left, 16px, 16px, 32px)
 
   .input
     flex-grow: 1
     width: 0
-
-    /* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px)
-      margin-left: 9px
-      font-size: 13px
-
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 600px)
-      margin-left: 24px
-      font-size: 18px
-
-    /* Medium devices (landscape tablets, 768px and up) */
-    @media only screen and (min-width: 768px)
-      margin-left: 24px
-      font-size: 18px
+    @include switchByScreenWidth(margin-left, 9px, 24px, 24px)
+    @include switchByScreenWidth(font-size, 13px, 18px, 18px)
 
   .error
     color: var(--color-red)
@@ -73,27 +36,10 @@
     background: var(--color-blue)
     border-radius: 10px
     color: var(--color-white)
-
-    /* Extra small devices (phones, 600px and down) */
-    @media only screen and (max-width: 600px)
-      width: 84px
-      height: 46px
-      margin-right: 7px
-      font-size: 14px
-
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 600px)
-      width: 106px
-      height: 50px
-      margin-right: 10px
-      font-size: 16px
-
-    /* Medium devices (landscape tablets, 768px and up) */
-    @media only screen and (min-width: 768px)
-      width: 106px
-      height: 50px
-      margin-right: 10px
-      font-size: 16px
+    @include switchByScreenWidth(width, 84px, 106px, 106px)
+    @include switchByScreenWidth(height, 46px, 50px, 50px)
+    @include switchByScreenWidth(margin-right, 7px, 10px, 10px)
+    @include switchByScreenWidth(font-size, 14px, 16px, 16px)
 
     &:hover
       background: var(--color-light-blue)
