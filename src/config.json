@@ -6,5 +6,7 @@
     "Moon": "moon",
     "Search": "search",
     "Sun": "sun"
-  }
+  },
+  "endpointUrl": "https://api.github.com",
+  "initUser": "octocat"
 }

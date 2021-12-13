@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import ThemeWrapper from './contexts/ThemeContext';
+import UserWrapper from './contexts/UserContext';
 import reportWebVitals from './reportWebVitals';
 import './index.sass';
 import './theme/theme.sass';
@@ -9,7 +10,9 @@ import './theme/theme.sass';
 ReactDOM.render(
   <React.StrictMode>
     <ThemeWrapper>
-      <App />
+      <UserWrapper>
+        <App />
+      </UserWrapper>
     </ThemeWrapper>
   </React.StrictMode>,
   document.getElementById('root')

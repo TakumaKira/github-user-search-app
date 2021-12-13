@@ -1,6 +1,6 @@
 import React from 'react';
 import { iconIds } from '../config.json';
-import { ThemeContext, ThemeType } from "../contexts/ThemeContext";
+import { ThemeContext, ThemeType } from '../contexts/ThemeContext';
 import getIconUrl from '../services/getIcon';
 import styles from './ThemeToggleButton.module.sass';
 

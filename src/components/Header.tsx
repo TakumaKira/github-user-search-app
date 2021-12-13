@@ -2,7 +2,7 @@ import React from 'react';
 import { title } from '../config.json';
 import { ThemeContext } from '../contexts/ThemeContext';
 import styles from './Header.module.sass';
-import ThemeToggleButton from "./ThemeToggleButton";
+import ThemeToggleButton from './ThemeToggleButton';
 
 function Header() {
   const { theme } = React.useContext(ThemeContext);

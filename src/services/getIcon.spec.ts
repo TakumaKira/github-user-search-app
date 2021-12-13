@@ -1,4 +1,4 @@
-import getIconUrl, { BASE_URL } from "./getIcon";
+import getIconUrl, { BASE_URL } from './getIcon';
 
 it(`should return right result for the input`, () => {
   const input = 'a';
