@@ -6,8 +6,9 @@ import getIconUrl from '../services/getIcon';
 import getUser from '../services/getUser';
 import styles from './SearchBox.module.sass';
 
-const PLACEHOLDER_LABEL = 'Search GitHub username…';
-const NO_RESULTS_LABEL = 'No results';
+export const PLACEHOLDER_LABEL = 'Search GitHub username…';
+export const NO_RESULTS_LABEL = 'No results';
+export const SEARCH_BUTTON_LABEL = 'Search';
 
 function SearchBox() {
   const { theme } = React.useContext(ThemeContext);
@@ -15,11 +16,11 @@ function SearchBox() {
   const [ searchQuery, setSearchQuery ] = React.useState('');
   const [ notFound, setNotFound ] = React.useState(false);
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const _handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setNotFound(false);
     setSearchQuery(event.target.value);
   };
-  const handleSearch = () => {
+  const _handleSearch = () => {
     if (!searchQuery) return;
     getUser(
       searchQuery,
@@ -33,7 +34,10 @@ function SearchBox() {
       data-theme={theme}
       className={styles.container}
     >
-      <svg className={styles.icon}>
+      <svg
+        role="icon"
+        className={styles.icon}
+      >
         <use xlinkHref={getIconUrl(iconIds.Search)}></use>
       </svg>
       <input
@@ -41,14 +45,14 @@ function SearchBox() {
         className={styles.input}
         type="text"
         placeholder={PLACEHOLDER_LABEL}
-        onChange={handleInputChange}
+        onChange={_handleInputChange}
       />
       {notFound && <span className={styles.error}>{NO_RESULTS_LABEL}</span>}
       <button
         className={styles.button}
-        onClick={handleSearch}
+        onClick={_handleSearch}
       >
-        Search
+        {SEARCH_BUTTON_LABEL}
       </button>
     </div>
   );

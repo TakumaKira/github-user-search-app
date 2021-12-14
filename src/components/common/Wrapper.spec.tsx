@@ -1,19 +1,6 @@
-import { act } from '@testing-library/react';
-import ReactDOM from 'react-dom';
+import { render, screen } from '@testing-library/react';
 import ShallowRenderer from 'react-test-renderer/shallow';
 import Wrapper from './Wrapper';
-
-let container: HTMLDivElement | null;
-
-beforeEach(() => {
-  container = document.createElement('div');
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  document.body.removeChild(container!);
-  container = null;
-});
 
 it(`should render child component`, () => {
   const Child = (): JSX.Element => <div></div>;
@@ -27,9 +14,7 @@ it(`should pass props to inside div`, () => {
   const attrName = 'a';
   const attrValue = 'b';
   const Child = (): JSX.Element => <div></div>;
-  act(() => {
-    ReactDOM.render(<Wrapper {...{ [attrName]: attrValue }}><Child /></Wrapper>, container);
-  });
-  const div = container!.querySelector('div')!;
+  render(<Wrapper {...{ [attrName]: attrValue }}><Child /></Wrapper>);
+  const div = screen.getByRole('group');
   expect(div.getAttribute(attrName)).toBe(attrValue);
 });

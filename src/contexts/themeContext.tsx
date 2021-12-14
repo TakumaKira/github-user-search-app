@@ -5,7 +5,7 @@ export enum ThemeType {
   Dark = 'dark',
 }
 
-const defaultDark = process.env.NODE_ENV === 'test' ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+const defaultDark = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)').matches : false;
 export const ThemeContext = React.createContext({
   theme: defaultDark ? ThemeType.Dark : ThemeType.Light,
   toggleTheme: () => {}
