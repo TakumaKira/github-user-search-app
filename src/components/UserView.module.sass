@@ -1,0 +1,29 @@
+@import '../services/responsive'
+@import './common/Card.module'
+@import '../services/grid'
+
+.container
+  @include card
+  @include switchByScreenWidth(min-height, 517px, 481px, 444px)
+  @include switchByScreenWidth(margin-top, 16px, 24px, 24px)
+  @include switchByScreenWidth(margin-bottom, 79px, 236px, 145px)
+
+.columnsContainer
+  @include column
+
+.rowsContainer
+  @include row
+
+.baseInfoContainerDesktop
+  justify-content: space-between
+  flex-grow: 1
+  @include column
+
+.namesContainer
+  @include row
+
+.infoContainerTablet
+  @include column
+
+.baseInfoContainerTablet
+  @include row

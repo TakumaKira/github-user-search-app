@@ -1,9 +1,24 @@
 import { AxiosError, AxiosResponse } from 'axios';
+import { nullUser } from '../types/user';
 import getUser from './getUser';
 import * as http from './http';
 
 it(`should call success callback when the result is not an error object`, async () => {
-  const res = { data: 'd' } as AxiosResponse;
+  const nullUserRaw = {
+    avatar_url: null,
+    name: null,
+    login: null,
+    created_at: null,
+    bio: null,
+    public_repos: null,
+    followers: null,
+    following: null,
+    location: null,
+    blog: null,
+    twitter_username: null,
+    company: null,
+  }  
+  const res = { data: nullUserRaw } as AxiosResponse;
   const mockGet = jest.spyOn(http, 'get');
   mockGet.mockResolvedValue(res);
   const onSuccess = jest.fn();
@@ -13,7 +28,7 @@ it(`should call success callback when the result is not an error object`, async 
     onSuccess,
     onError
   );
-  expect(onSuccess).toHaveBeenCalledWith(res.data);
+  expect(onSuccess).toHaveBeenCalledWith(nullUser);
   expect(onError).not.toHaveBeenCalled();
 });
 

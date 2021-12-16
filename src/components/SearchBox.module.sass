@@ -1,20 +1,14 @@
-@import '../services/responsive.sass'
-  
+@import '../services/responsive'
+@import './common/Card.module'
+
 .container
   display: flex
   align-items: center
-  border-radius: 15px
-  background: var(--color-off-white)
-  box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.198567)
+  @include card
   @include switchByScreenWidth(height, 60px, 60px, 69px)
-
-  &[data-theme='dark']
-    background: var(--color-dark-blue)
-    box-shadow: none
 
   & > *
     flex-shrink: 0
-
 
   .icon
     fill: var(--color-blue)

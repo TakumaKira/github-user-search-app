@@ -4,6 +4,7 @@ import { iconIds } from '../config.json';
 import UserWrapper, { UserContext } from '../contexts/UserContext';
 import getIconUrl from '../services/getIcon';
 import getUser from '../services/getUser';
+import { nullUser } from '../types/user';
 import SearchBox, { NO_RESULTS_LABEL, PLACEHOLDER_LABEL, SEARCH_BUTTON_LABEL } from './SearchBox';
 
 jest.mock('../services/getUser', () => jest.fn());
@@ -77,13 +78,13 @@ it(`should set new user to the context only when found`, () => {
   render(<UserWrapper><Inter><SearchBox /></Inter></UserWrapper>);
 
   const resultElem = screen.getByTestId('user') as HTMLSpanElement;
-  expect(resultElem.textContent).toBe('null');
+  expect(resultElem.textContent).toBe(JSON.stringify(nullUser));
 
   const input = screen.getByRole('textbox') as HTMLInputElement;
   fireEvent.change(input, {target: {value: UserNames.FAIL}});
   const button = screen.getByRole('button');
   fireEvent.click(button);
-  expect(resultElem.textContent).toBe('null');
+  expect(resultElem.textContent).toBe(JSON.stringify(nullUser));
 
   fireEvent.change(input, {target: {value: UserNames.SUCCESS}});
   fireEvent.click(button);

@@ -8,7 +8,7 @@ function Header() {
   const { theme } = React.useContext(ThemeContext);
 
   return (
-    <div className={styles.headerContainer}>
+    <div className={styles.container}>
       <h1
         className={styles.title}
         data-theme={theme}

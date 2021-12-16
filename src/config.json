@@ -5,8 +5,14 @@
     "Location": "location",
     "Moon": "moon",
     "Search": "search",
-    "Sun": "sun"
+    "Sun": "sun",
+    "Twitter": "twitter",
+    "Website": "website"
   },
   "endpointUrl": "https://api.github.com",
-  "initUser": "octocat"
+  "initUser": "octocat",
+  "responsiveBreakPointWidth": {
+    "mobileTablet": 600,
+    "tabletDesktop": 768
+  }
 }

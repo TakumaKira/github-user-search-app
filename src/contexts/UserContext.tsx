@@ -1,14 +1,15 @@
 import React from 'react';
+import User, { nullUser } from '../types/user';
 
 export const UserContext = React.createContext({
-  user: null,
-  setUser: (user: any) => {}
+  user: nullUser,
+  setUser: (user: User) => {}
 });
 
 const UserWrapper = (props: any) => {
-  const [user, setUser] = React.useState(null);
+  const [user, setUser] = React.useState(nullUser);
 
-  function _setUser(user: any) {
+  function _setUser(user: User) {
     if (!user) return;
     setUser(user);
   }
