@@ -44,6 +44,7 @@ function SearchBox() {
         type="text"
         placeholder={PLACEHOLDER_LABEL}
         onChange={_handleInputChange}
+        onKeyUp={(e) => e.key === 'Enter' && _handleSearch()}
       />
       {notFound && <span className={styles.error}>{NO_RESULTS_LABEL}</span>}
       <button
