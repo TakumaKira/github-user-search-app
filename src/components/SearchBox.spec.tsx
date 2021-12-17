@@ -1,4 +1,5 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import userEvent from "@testing-library/user-event";
 import React from 'react';
 import { iconIds } from '../config.json';
 import UserWrapper, { UserContext } from '../contexts/UserContext';
@@ -30,6 +31,15 @@ it(`should render search button`, () => {
   const button = screen.getByRole('button');
   expect(button).toBeInTheDocument();
   expect(button.textContent).toBe(SEARCH_BUTTON_LABEL);
+});
+
+it(`should start searching when inputting some string then enter`, () => {
+  render(<SearchBox />);
+  const input = screen.getByRole('textbox') as HTMLInputElement;
+  userEvent.type(input, '{enter}');
+  expect(getUser).not.toHaveBeenCalled();
+  userEvent.type(input, 'a{enter}');
+  expect(getUser).toHaveBeenCalled();
 });
 
 it(`should render "${NO_RESULTS_LABEL}" only right after search result is not found`, () => {
