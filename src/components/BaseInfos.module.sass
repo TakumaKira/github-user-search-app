@@ -1,0 +1,36 @@
+@import '../services/grid'
+@import '../theme/theme'
+@import '../services/responsive'
+
+.row
+  @include row
+
+.nameAndDateContainer
+  @include column
+  justify-content: space-between
+  align-items: center
+
+.name
+  @extend h1
+
+  &[data-responsive-type='mobile']
+    font-size: 16px
+
+.username
+  color: var(--color-blue)
+  @include switchByScreenWidth(font-size, 13px, 16px, 16px)
+  @include switchByScreenWidth(line-height, 19.25px, 23.7px, 23.7px)
+
+  &[data-responsive-type='tablet'], &[data-responsive-type='desktop']
+    margin-top: 2px
+
+.joinedDate
+  color: var(--color-medium)
+  @include switchByScreenWidth(font-size, 13px, 15px, 15px)
+  @include switchByScreenWidth(line-height, 19.25px, 22.22px, 22.22px)
+
+  &[data-responsive-type='mobile']
+    margin-top: 6px
+
+  &[data-responsive-type='tablet']
+    margin-top: 4px

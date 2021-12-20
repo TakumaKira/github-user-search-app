@@ -1,12 +1,17 @@
-import Info from './Info';
 import { iconIds } from '../config.json';
+import formatUsername from '../services/formatUsername';
+import getUserpage, { AccountType } from '../services/getUserpage';
+import Info from './Info';
 import styles from './Infos.module.sass';
 
-function Infos({location, blogUrl, twitterUsername, company, hasColumns}: {location: string | null, blogUrl: string | null, twitterUsername: string | null, company: string | null, hasColumns: boolean}) {
+function Infos({location, blogUrl, twitterUsername, company, hasColumns, className}: {location: string | null, blogUrl: string | null, twitterUsername: string | null, company: string | null, hasColumns: boolean, className?: string}) {
   return hasColumns
     ? (
-      <div className={styles.columnsContainer}>
-        <div>
+      <div className={`${styles.columnsContainer} ${className}`}>
+        <div
+          className={styles.rowsContainer}
+          style={{width: '50%'}}
+        >
           <Info
             iconId={iconIds.Location}
             info={location}
@@ -14,12 +19,16 @@ function Infos({location, blogUrl, twitterUsername, company, hasColumns}: {locat
           <Info
             iconId={iconIds.Website}
             info={blogUrl}
+            linkUrl={blogUrl}
           />
         </div>
-        <div>
+        <div
+          className={styles.rowsContainer}
+        >
           <Info
             iconId={iconIds.Twitter}
-            info={twitterUsername}
+            info={twitterUsername ? formatUsername(twitterUsername) : null}
+            linkUrl={twitterUsername ? getUserpage(twitterUsername, AccountType.Twitter) : null}
           />
           <Info
             iconId={iconIds.Company}
@@ -29,7 +38,9 @@ function Infos({location, blogUrl, twitterUsername, company, hasColumns}: {locat
       </div>
     )
     : (
-      <div>
+      <div
+        className={`${styles.rowsContainer} ${className}`}
+      >
         <Info
           iconId={iconIds.Location}
           info={location}
@@ -37,10 +48,12 @@ function Infos({location, blogUrl, twitterUsername, company, hasColumns}: {locat
         <Info
           iconId={iconIds.Website}
           info={blogUrl}
+          linkUrl={blogUrl}
         />
         <Info
           iconId={iconIds.Twitter}
-          info={twitterUsername}
+          info={twitterUsername ? formatUsername(twitterUsername) : null}
+          linkUrl={twitterUsername ? getUserpage(twitterUsername, AccountType.Twitter) : null}
         />
         <Info
           iconId={iconIds.Company}

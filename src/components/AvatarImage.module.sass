@@ -1,7 +1,10 @@
+@import '../services/responsive'
+
 .wrapper
   border-radius: 50%
   overflow: hidden
   display: flex
+  flex-shrink: 0
   justify-content: center
   align-items: center
   color: var(--color-grey)
@@ -14,3 +17,4 @@
   .loading
     width: min-content
     text-align: center
+    @include switchByScreenWidth(font-size, 10px, 15px, 15px)

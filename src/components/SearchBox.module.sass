@@ -4,6 +4,7 @@
 .container
   display: flex
   align-items: center
+  margin-top: 36px
   @include card
   @include switchByScreenWidth(height, 60px, 60px, 69px)
 
@@ -25,6 +26,7 @@
   .error
     color: var(--color-red)
     margin-right: 24px
+    @include switchByScreenWidth(font-size, 10px, 15px, 15px)
 
   .button
     background: var(--color-blue)

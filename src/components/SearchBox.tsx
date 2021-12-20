@@ -4,6 +4,7 @@ import { ThemeContext } from '../contexts/ThemeContext';
 import { UserContext } from '../contexts/UserContext';
 import getUser from '../services/getUser';
 import Icon from './common/Icon';
+import Text from './common/Text';
 import styles from './SearchBox.module.sass';
 
 export const PLACEHOLDER_LABEL = 'Search GitHub username…';
@@ -46,7 +47,12 @@ function SearchBox() {
         onChange={_handleInputChange}
         onKeyDown={(e) => e.key === 'Enter' && _handleSearch()}
       />
-      {notFound && <span className={styles.error}>{NO_RESULTS_LABEL}</span>}
+      {notFound &&
+        <Text
+          className={styles.error}
+          text={NO_RESULTS_LABEL}
+        />
+      }
       <button
         className={styles.button}
         onClick={_handleSearch}

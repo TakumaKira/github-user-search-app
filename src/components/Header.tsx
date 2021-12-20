@@ -1,6 +1,7 @@
 import React from 'react';
 import { title } from '../config.json';
 import { ThemeContext } from '../contexts/ThemeContext';
+import Text from './common/Text';
 import styles from './Header.module.sass';
 import ThemeToggleButton from './ThemeToggleButton';
 
@@ -9,12 +10,11 @@ function Header() {
 
   return (
     <div className={styles.container}>
-      <h1
+      <Text
         className={styles.title}
+        text={title}
         data-theme={theme}
-      >
-        {title}
-      </h1>
+      />
       <ThemeToggleButton />
     </div>
   );

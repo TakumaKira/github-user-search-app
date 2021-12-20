@@ -1,4 +1,20 @@
 @import '../services/grid'
+@import '../services/responsive'
 
 .rowsContainer
   @include row
+
+  &[data-responsive-type='mobile']
+    align-items: center
+
+  .title
+    color: var(--color-medium-strong)
+    @include switchByScreenWidth(font-size, 11px, 13px, 13px)
+    @include switchByScreenWidth(line-height, 16.29px, 19.25px, 19.25px)
+
+  .value
+    color: var(--color-normal)
+    font-weight: 700
+    @include switchByScreenWidth(font-size, 16px, 22px, 22px)
+    @include switchByScreenWidth(line-height, 23.7px, 32.58px, 32.58px)
+    @include switchByScreenWidth(margin-top, 8px, 1px, 1px)

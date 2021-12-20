@@ -1,5 +1,7 @@
 {
   "title": "devfinder",
+  "endpointUrl": "https://api.github.com",
+  "initUser": "octocat",
   "iconIds": {
     "Company": "company",
     "Location": "location",
@@ -9,10 +11,12 @@
     "Twitter": "twitter",
     "Website": "website"
   },
-  "endpointUrl": "https://api.github.com",
-  "initUser": "octocat",
   "responsiveBreakPointWidth": {
     "mobileTablet": 600,
     "tabletDesktop": 768
+  },
+  "userpageBaseUrl": {
+    "github": "https://github.com",
+    "twitter": "https://twitter.com"
   }
 }

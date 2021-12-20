@@ -1,49 +1,52 @@
 import React from 'react';
-import { ThemeContext } from '../contexts/ThemeContext';
+import { ThemeContext, ThemeType } from '../contexts/ThemeContext';
 import { UserContext } from '../contexts/UserContext';
 import useResponsiveType, { ResponsiveType } from '../hooks/useResponsiveType';
 import User from '../types/user';
 import AvatarImage from './AvatarImage';
+import BaseInfos from './BaseInfos';
 import Text from './common/Text';
 import Infos from './Infos';
 import Stats from './Stats';
 import styles from './UserView.module.sass';
 
-const NA = 'N/A';
 const NO_BIO = 'This profile has no bio';
 
-const UserViewMobile = (user: User): JSX.Element =>
-  <div className={styles.rowsContainer}>
-    <div className={styles.infoContainerTablet}>
+const UserViewMobile = (user: User, theme: ThemeType): JSX.Element =>
+  <div
+    className={styles.mainContainer}
+    data-responsive-type={ResponsiveType.Mobile}
+  >
+    <div
+      className={styles.subContainer}
+      data-responsive-type={ResponsiveType.Mobile}
+    >
       <AvatarImage
         src={user.avatarUrl}
         size={70}
+        className={styles.avatar}
       />
-      <div className={styles.baseInfoContainerTablet}>
-        <Text
-          className={styles.name}
-          text={user.name || NA}
-        />
-        <Text
-          className={styles.username}
-          text={user.username || NA}
-        />
-        <Text
-          className={styles.joinedDate}
-          text={user.joinedDate ? getJoinedDate(user.joinedDate) : NA}
-        />
-      </div>
+      <BaseInfos
+        name={user.name}
+        username={user.username}
+        joinedDate={user.joinedDate}
+        hasColumns={false}
+      />
     </div>
     <Text
       className={styles.bio}
+      data-theme={theme}
+      data-responsive-type={ResponsiveType.Mobile}
       text={user.bio || NO_BIO}
     />
     <Stats
+      className={styles.stats}
       repos={user.repos}
       followers={user.followers}
       following={user.following}
     />
     <Infos
+      className={styles.infos}
       location={user.location}
       blogUrl={user.blogUrl}
       twitterUsername={user.twitterUsername}
@@ -52,38 +55,40 @@ const UserViewMobile = (user: User): JSX.Element =>
     />
   </div>;
 
-const UserViewTablet = (user: User): JSX.Element =>
-  <div className={styles.rowsContainer}>
-    <div className={styles.infoContainerTablet}>
+const UserViewTablet = (user: User, theme: ThemeType): JSX.Element =>
+  <div
+    className={styles.mainContainer}
+    data-responsive-type={ResponsiveType.Tablet}
+  >
+    <div
+      className={styles.subContainer}
+      data-responsive-type={ResponsiveType.Tablet}
+    >
       <AvatarImage
         src={user.avatarUrl}
         size={117}
+        className={styles.avatar}
       />
-      <div className={styles.baseInfoContainerTablet}>
-        <Text
-          className={styles.name}
-          text={user.name || NA}
-        />
-        <Text
-          className={styles.username}
-          text={user.username || NA}
-        />
-        <Text
-          className={styles.joinedDate}
-          text={user.joinedDate ? getJoinedDate(user.joinedDate) : NA}
-        />
-      </div>
+      <BaseInfos
+        name={user.name}
+        username={user.username}
+        joinedDate={user.joinedDate}
+        hasColumns={false}
+      />
     </div>
     <Text
       className={styles.bio}
+      data-theme={theme}
       text={user.bio || NO_BIO}
     />
     <Stats
+      className={styles.stats}
       repos={user.repos}
       followers={user.followers}
       following={user.following}
     />
     <Infos
+      className={styles.infos}
       location={user.location}
       blogUrl={user.blogUrl}
       twitterUsername={user.twitterUsername}
@@ -92,39 +97,39 @@ const UserViewTablet = (user: User): JSX.Element =>
     />
   </div>;
 
-const UserViewDesktop = (user: User): JSX.Element =>
-  <div className={styles.columnsContainer}>
+const UserViewDesktop = (user: User, theme: ThemeType): JSX.Element =>
+  <div
+    className={styles.mainContainer}
+    data-responsive-type={ResponsiveType.Desktop}
+  >
     <AvatarImage
       src={user.avatarUrl}
       size={117}
+      className={styles.avatar}
     />
-    <div className={styles.infoContainerDesktop}>
-      <div className={styles.baseInfoContainerDesktop}>
-        <div className={styles.namesContainer}>
-          <Text
-            className={styles.name}
-            text={user.name || NA}
-          />
-          <Text
-            className={styles.username}
-            text={user.username || NA}
-          />
-        </div>
-        <Text
-          className={styles.joinedDate}
-          text={user.joinedDate ? getJoinedDate(user.joinedDate) : NA}
-        />
-      </div>
+    <div
+      className={styles.subContainer}
+      data-responsive-type={ResponsiveType.Desktop}
+    >
+      <BaseInfos
+        name={user.name}
+        username={user.username}
+        joinedDate={user.joinedDate}
+        hasColumns={true}
+      />
       <Text
         className={styles.bio}
+        data-theme={theme}
         text={user.bio || NO_BIO}
       />
       <Stats
+        className={styles.stats}
         repos={user.repos}
         followers={user.followers}
         following={user.following}
       />
       <Infos
+        className={styles.infos}
         location={user.location}
         blogUrl={user.blogUrl}
         twitterUsername={user.twitterUsername}
@@ -134,23 +139,14 @@ const UserViewDesktop = (user: User): JSX.Element =>
     </div>
   </div>;
 
-function getJoinedDate(date: Date): string {
-  return `Joined ${dateFormatter(date)}`;
-}
-
-function dateFormatter(date: Date): string {
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`
-}
-
-function getUserView(user: User, responsiveType: ResponsiveType): JSX.Element {
+function getUserView(user: User, responsiveType: ResponsiveType, theme: ThemeType): JSX.Element {
   switch (responsiveType) {
     case ResponsiveType.Mobile:
-      return UserViewMobile(user);
+      return UserViewMobile(user, theme);
     case ResponsiveType.Tablet:
-      return UserViewTablet(user);
+      return UserViewTablet(user, theme);
     case ResponsiveType.Desktop:
-      return UserViewDesktop(user);
+      return UserViewDesktop(user, theme);
     default:
       throw new Error(`Undefined ResponsiveType: ${responsiveType}`);
   }
@@ -166,7 +162,7 @@ function UserView() {
       data-theme={theme}
       className={styles.container}
     >
-      {getUserView(user, responsiveType)}
+      {getUserView(user, responsiveType, theme)}
     </div>
   );
 }

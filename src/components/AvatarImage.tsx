@@ -1,9 +1,12 @@
 import styles from './AvatarImage.module.sass';
+import Text from './common/Text';
 
-function AvatarImage({src, size}: {src: string | null, size: number}) {
+const LOADING = 'Image Loding...';
+
+function AvatarImage({src, size, className}: {src: string | null, size: number, className?: string}) {
   return (
     <div
-      className={styles.wrapper}
+      className={`${styles.wrapper} ${className}`}
       style={{height: size, width: size}}
     >
       {src
@@ -12,11 +15,10 @@ function AvatarImage({src, size}: {src: string | null, size: number}) {
             src={src}
             alt=""
           />
-        : <span
+        : <Text
             className={styles.loading}
-          >
-            Image Loding...
-          </span>
+            text={LOADING}
+          />            
       }
     </div>
   );

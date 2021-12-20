@@ -1,4 +1,11 @@
 @import '../services/grid'
+@import '../services/responsive'
   
 .columnsContainer
   @include column
+
+.rowsContainer
+  @include row
+
+  & > :not(:first-child)
+    @include switchByScreenWidth(margin-top, 16px, 19px, 19px)
