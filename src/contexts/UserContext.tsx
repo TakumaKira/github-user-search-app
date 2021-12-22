@@ -1,5 +1,5 @@
 import React from 'react';
-import User, { nullUser } from '../types/user';
+import User, { nullUser } from '../interfaces/user';
 
 export const UserContext = React.createContext({
   user: nullUser,
@@ -9,14 +9,9 @@ export const UserContext = React.createContext({
 const UserWrapper = (props: any) => {
   const [user, setUser] = React.useState(nullUser);
 
-  function _setUser(user: User) {
-    if (!user) return;
-    setUser(user);
-  }
-
   return (
     <UserContext.Provider
-      value={{ user: user, setUser: _setUser }}
+      value={{ user: user, setUser }}
     >
       {props.children}
     </UserContext.Provider>

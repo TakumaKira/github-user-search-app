@@ -42,7 +42,7 @@ function SearchBox() {
       <input
         data-theme={theme}
         className={styles.input}
-        type="text"
+        type='text'
         placeholder={PLACEHOLDER_LABEL}
         onChange={_handleInputChange}
         onKeyDown={(e) => e.key === 'Enter' && _handleSearch()}

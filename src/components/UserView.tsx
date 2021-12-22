@@ -2,7 +2,7 @@ import React from 'react';
 import { ThemeContext, ThemeType } from '../contexts/ThemeContext';
 import { UserContext } from '../contexts/UserContext';
 import useResponsiveType, { ResponsiveType } from '../hooks/useResponsiveType';
-import User from '../types/user';
+import User from '../interfaces/user';
 import AvatarImage from './AvatarImage';
 import BaseInfos from './BaseInfos';
 import Text from './common/Text';
@@ -11,6 +11,12 @@ import Stats from './Stats';
 import styles from './UserView.module.sass';
 
 const NO_BIO = 'This profile has no bio';
+
+export const avatarSizes = {
+  MOBILE: 70,
+  TABLET: 117,
+  DESKTOP: 117,
+};
 
 const UserViewMobile = (user: User, theme: ThemeType): JSX.Element =>
   <div
@@ -23,14 +29,13 @@ const UserViewMobile = (user: User, theme: ThemeType): JSX.Element =>
     >
       <AvatarImage
         src={user.avatarUrl}
-        size={70}
+        size={avatarSizes.MOBILE}
         className={styles.avatar}
       />
       <BaseInfos
         name={user.name}
         username={user.username}
         joinedDate={user.joinedDate}
-        hasColumns={false}
       />
     </div>
     <Text
@@ -51,7 +56,6 @@ const UserViewMobile = (user: User, theme: ThemeType): JSX.Element =>
       blogUrl={user.blogUrl}
       twitterUsername={user.twitterUsername}
       company={user.company}
-      hasColumns={false}
     />
   </div>;
 
@@ -66,19 +70,19 @@ const UserViewTablet = (user: User, theme: ThemeType): JSX.Element =>
     >
       <AvatarImage
         src={user.avatarUrl}
-        size={117}
+        size={avatarSizes.TABLET}
         className={styles.avatar}
       />
       <BaseInfos
         name={user.name}
         username={user.username}
         joinedDate={user.joinedDate}
-        hasColumns={false}
       />
     </div>
     <Text
       className={styles.bio}
       data-theme={theme}
+      data-responsive-type={ResponsiveType.Tablet}
       text={user.bio || NO_BIO}
     />
     <Stats
@@ -104,7 +108,7 @@ const UserViewDesktop = (user: User, theme: ThemeType): JSX.Element =>
   >
     <AvatarImage
       src={user.avatarUrl}
-      size={117}
+      size={avatarSizes.DESKTOP}
       className={styles.avatar}
     />
     <div
@@ -120,6 +124,7 @@ const UserViewDesktop = (user: User, theme: ThemeType): JSX.Element =>
       <Text
         className={styles.bio}
         data-theme={theme}
+        data-responsive-type={ResponsiveType.Desktop}
         text={user.bio || NO_BIO}
       />
       <Stats
@@ -139,6 +144,8 @@ const UserViewDesktop = (user: User, theme: ThemeType): JSX.Element =>
     </div>
   </div>;
 
+export const undefinedResponsiveTypeError = (responsiveType: ResponsiveType) => new Error(`Undefined ResponsiveType: ${responsiveType}`)
+
 function getUserView(user: User, responsiveType: ResponsiveType, theme: ThemeType): JSX.Element {
   switch (responsiveType) {
     case ResponsiveType.Mobile:
@@ -148,7 +155,7 @@ function getUserView(user: User, responsiveType: ResponsiveType, theme: ThemeTyp
     case ResponsiveType.Desktop:
       return UserViewDesktop(user, theme);
     default:
-      throw new Error(`Undefined ResponsiveType: ${responsiveType}`);
+      throw undefinedResponsiveTypeError(responsiveType);
   }
 }
 

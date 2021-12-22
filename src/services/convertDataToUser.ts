@@ -1,4 +1,4 @@
-import User from '../types/user';
+import User from '../interfaces/user';
 import warnLackOfProp from './warnLackOfProp';
 
 export default function convertDataToUser(data: any): User {

@@ -1,6 +1,6 @@
 import styles from './Text.module.sass';
 
-function Text({ className, text, linkUrl, ...props }: { className: string, text: string, linkUrl?: string | null }) {
+function Text({ text, className, linkUrl, ...props }: { text: string, className?: string, linkUrl?: string | null }) {
   return (linkUrl
     ? <a
         className={`${styles.link} ${className}`}

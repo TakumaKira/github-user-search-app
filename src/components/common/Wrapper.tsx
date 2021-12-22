@@ -1,7 +1,7 @@
 function Wrapper({...props}) {
   return (
     <div
-      role="group"
+      role='group'
       {...props}
     >
       {props.children}

@@ -1,10 +1,10 @@
+import UserpageTwitter from '../classes/userpageTwitter';
 import { iconIds } from '../config.json';
 import formatUsername from '../services/formatUsername';
-import getUserpage, { AccountType } from '../services/getUserpage';
 import Info from './Info';
 import styles from './Infos.module.sass';
 
-function Infos({location, blogUrl, twitterUsername, company, hasColumns, className}: {location: string | null, blogUrl: string | null, twitterUsername: string | null, company: string | null, hasColumns: boolean, className?: string}) {
+function Infos({location, blogUrl, twitterUsername, company, hasColumns, className}: {location: string | null, blogUrl: string | null, twitterUsername: string | null, company: string | null, hasColumns?: boolean, className?: string}) {
   return hasColumns
     ? (
       <div className={`${styles.columnsContainer} ${className}`}>
@@ -28,7 +28,7 @@ function Infos({location, blogUrl, twitterUsername, company, hasColumns, classNa
           <Info
             iconId={iconIds.Twitter}
             info={twitterUsername ? formatUsername(twitterUsername) : null}
-            linkUrl={twitterUsername ? getUserpage(twitterUsername, AccountType.Twitter) : null}
+            linkUrl={twitterUsername ? new UserpageTwitter(twitterUsername).getUrl() : null}
           />
           <Info
             iconId={iconIds.Company}
@@ -53,7 +53,7 @@ function Infos({location, blogUrl, twitterUsername, company, hasColumns, classNa
         <Info
           iconId={iconIds.Twitter}
           info={twitterUsername ? formatUsername(twitterUsername) : null}
-          linkUrl={twitterUsername ? getUserpage(twitterUsername, AccountType.Twitter) : null}
+          linkUrl={twitterUsername ? new UserpageTwitter(twitterUsername).getUrl() : null}
         />
         <Info
           iconId={iconIds.Company}

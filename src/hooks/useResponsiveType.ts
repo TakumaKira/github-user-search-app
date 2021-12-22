@@ -15,7 +15,7 @@ function getResponsiveType(width: number): ResponsiveType {
   return ResponsiveType.Desktop;
 }
 
-export default function useResponsiveType() {
+export default function useResponsiveType(): ResponsiveType {
   const [ responsiveType, setResponsiveType ] = React.useState(getResponsiveType(window.innerWidth));
 
   React.useEffect(() => {

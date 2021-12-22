@@ -1,6 +1,7 @@
 
 import { render, screen } from '@testing-library/react';
 import ShallowRenderer from 'react-test-renderer/shallow';
+import '../services/matchMedia.mock'; // Must be imported before the tested file
 import { title } from '../config.json';
 import Header from './Header';
 import ThemeToggleButton from './ThemeToggleButton';

@@ -1,4 +1,4 @@
-import User from '../types/user';
+import User from '../interfaces/user';
 import convertDataToUser from './convertDataToUser';
 import { get } from './http';
 

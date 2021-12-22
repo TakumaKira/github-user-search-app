@@ -2,6 +2,12 @@ import useResponsiveType from '../hooks/useResponsiveType';
 import Stat from './Stat';
 import styles from './Stats.module.sass';
 
+export const labels = {
+  REPOS: 'Repos',
+  FOLLOWERS: 'Followers',
+  FOLLOWING: 'Following',
+};
+
 function Stats({repos, followers, following, className}: {repos: number | null, followers: number | null, following: number | null, className?: string}) {
   const responsiveType = useResponsiveType();
 
@@ -12,17 +18,17 @@ function Stats({repos, followers, following, className}: {repos: number | null, 
     >
       <Stat
         className={styles.repos}
-        title='Repos'
+        title={labels.REPOS}
         value={repos}
       />
       <Stat
         className={styles.followers}
-        title='Followers'
+        title={labels.FOLLOWERS}
         value={followers}
       />
       <Stat
         className={styles.following}
-        title='Following'
+        title={labels.FOLLOWING}
         value={following}
       />
     </div>

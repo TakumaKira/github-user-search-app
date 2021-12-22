@@ -1,21 +1,13 @@
+import UserpageGithub from '../classes/userpageGithub';
 import useResponsiveType from '../hooks/useResponsiveType';
+import formatJoinedDate from '../services/formatJoinedDate';
 import formatUsername from '../services/formatUsername';
-import getUserpage, { AccountType } from '../services/getUserpage';
 import styles from './BaseInfos.module.sass';
 import Text from './common/Text';
 
 const NA = '';
 
-function getJoinedDate(date: Date): string {
-  return `Joined ${formatDate(date)}`;
-}
-
-function formatDate(date: Date): string {
-  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
-}
-
-function BaseInfos({name, username, joinedDate, hasColumns}: {name: string | null, username: string | null, joinedDate: Date | null, hasColumns: boolean}) {
+function BaseInfos({name, username, joinedDate, hasColumns}: {name: string | null, username: string | null, joinedDate: Date | null, hasColumns?: boolean}) {
   const responsiveType = useResponsiveType();
 
   return hasColumns ? (
@@ -29,14 +21,14 @@ function BaseInfos({name, username, joinedDate, hasColumns}: {name: string | nul
         <Text
           className={styles.joinedDate}
           data-responsive-type={responsiveType}
-          text={joinedDate ? getJoinedDate(joinedDate) : NA}
+          text={joinedDate ? formatJoinedDate(joinedDate) : NA}
         />
       </div>
       <Text
         className={styles.username}
         data-responsive-type={responsiveType}
         text={username ? formatUsername(username) : NA}
-        linkUrl={username ? getUserpage(username, AccountType.Github) : null}
+        linkUrl={username ? new UserpageGithub(username).getUrl() : null}
       />
     </div>
   ) : (
@@ -50,12 +42,12 @@ function BaseInfos({name, username, joinedDate, hasColumns}: {name: string | nul
         className={styles.username}
         data-responsive-type={responsiveType}
         text={username ? formatUsername(username) : NA}
-        linkUrl={username ? getUserpage(username, AccountType.Github) : null}
+        linkUrl={username ? new UserpageGithub(username).getUrl() : null}
       />
       <Text
         className={styles.joinedDate}
         data-responsive-type={responsiveType}
-        text={joinedDate ? getJoinedDate(joinedDate) : NA}
+        text={joinedDate ? formatJoinedDate(joinedDate) : NA}
       />
     </div>
   );
