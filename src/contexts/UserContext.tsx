@@ -1,21 +1,17 @@
 import React from 'react';
+import User, { nullUser } from '../interfaces/user';
 
 export const UserContext = React.createContext({
-  user: null,
-  setUser: (user: any) => {}
+  user: nullUser,
+  setUser: (user: User) => {}
 });
 
 const UserWrapper = (props: any) => {
-  const [user, setUser] = React.useState(null);
-
-  function _setUser(user: any) {
-    if (!user) return;
-    setUser(user);
-  }
+  const [user, setUser] = React.useState(nullUser);
 
   return (
     <UserContext.Provider
-      value={{ user: user, setUser: _setUser }}
+      value={{ user: user, setUser }}
     >
       {props.children}
     </UserContext.Provider>

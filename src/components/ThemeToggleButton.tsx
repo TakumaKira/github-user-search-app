@@ -1,7 +1,8 @@
 import React from 'react';
 import { iconIds } from '../config.json';
 import { ThemeContext, ThemeType } from '../contexts/ThemeContext';
-import getIconUrl from '../services/getIcon';
+import Icon from './common/Icon';
+import Text from './common/Text';
 import styles from './ThemeToggleButton.module.sass';
 
 export enum ThemeLabel {
@@ -18,15 +19,14 @@ function ThemeToggleButton() {
       data-theme={theme}
       onClick={toggleTheme}
     >
-      <h4 className={styles.text}>
-        {theme === ThemeType.Light ? ThemeLabel.Dark : ThemeLabel.Light}
-      </h4>
-      <svg 
-        role="icon"
+      <Text
+        className={styles.text}
+        text={theme === ThemeType.Light ? ThemeLabel.Dark : ThemeLabel.Light}
+      />
+      <Icon
         className={styles.icon}
-      >
-        <use xlinkHref={`${getIconUrl(theme === ThemeType.Light ? iconIds.Moon : iconIds.Sun)}`}></use>
-      </svg>
+        iconId={theme === ThemeType.Light ? iconIds.Moon : iconIds.Sun}
+      />
     </button>
   );
 }

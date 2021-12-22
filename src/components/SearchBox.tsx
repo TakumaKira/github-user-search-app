@@ -2,8 +2,9 @@ import React, { ChangeEvent } from 'react';
 import { iconIds } from '../config.json';
 import { ThemeContext } from '../contexts/ThemeContext';
 import { UserContext } from '../contexts/UserContext';
-import getIconUrl from '../services/getIcon';
 import getUser from '../services/getUser';
+import Icon from './common/Icon';
+import Text from './common/Text';
 import styles from './SearchBox.module.sass';
 
 export const PLACEHOLDER_LABEL = 'Search GitHub username…';
@@ -34,20 +35,24 @@ function SearchBox() {
       data-theme={theme}
       className={styles.container}
     >
-      <svg
-        role="icon"
+      <Icon
         className={styles.icon}
-      >
-        <use xlinkHref={getIconUrl(iconIds.Search)}></use>
-      </svg>
+        iconId={iconIds.Search}
+      />
       <input
         data-theme={theme}
         className={styles.input}
-        type="text"
+        type='text'
         placeholder={PLACEHOLDER_LABEL}
         onChange={_handleInputChange}
+        onKeyDown={(e) => e.key === 'Enter' && _handleSearch()}
       />
-      {notFound && <span className={styles.error}>{NO_RESULTS_LABEL}</span>}
+      {notFound &&
+        <Text
+          className={styles.error}
+          text={NO_RESULTS_LABEL}
+        />
+      }
       <button
         className={styles.button}
         onClick={_handleSearch}

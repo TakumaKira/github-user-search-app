@@ -1,0 +1,52 @@
+@import '../services/responsive'
+@import './common/Card.module'
+@import '../services/grid'
+
+.container
+  @include card
+  @include switchByScreenWidth(min-height, 517px, 481px, 444px)
+  @include switchByScreenWidth(margin-top, 16px, 24px, 24px)
+  @include switchByScreenWidth(margin-bottom, 79px, 236px, 145px)
+
+.mainContainer
+  &[data-responsive-type='mobile']
+    @include row
+    padding-top: 32px
+    padding-bottom: 48px
+    padding-left: 24px
+    padding-right: 24px
+
+  &[data-responsive-type='tablet']
+    @include row
+    padding: 40px
+
+  &[data-responsive-type='desktop']
+    @include column
+    padding: 48px
+
+.subContainer
+  &[data-responsive-type='mobile'], &[data-responsive-type='tablet']
+    @include column
+    align-items: center
+
+  &[data-responsive-type='desktop']
+    @include row //Needs other elements work properly with css
+    flex-grow: 1
+
+.avatar
+  @include switchByScreenWidth(margin-right, 19px, 41px, 37px)
+
+.bio
+  @include switchByScreenWidth(margin-top, 33px, 24px, 20px)
+  color: var(--color-medium-strong)
+  &[data-theme='dark']
+    color: var(--color-normal)
+  
+  &[data-responsive-type='mobile']
+    font-size: 13px
+
+.stats
+  @include switchByScreenWidth(margin-top, 23px, 32px, 32px)
+
+.infos
+  @include switchByScreenWidth(margin-top, 24px, 30px, 37px)

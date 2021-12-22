@@ -1,7 +1,8 @@
 import { fireEvent, render, screen } from '@testing-library/react';
+import '../services/matchMedia.mock'; // Must be imported before the tested file
 import { iconIds } from '../config.json';
 import ThemeWrapper, { ThemeType } from '../contexts/ThemeContext';
-import getIconUrl from '../services/getIcon';
+import getIconUrl from '../services/getIconUrl';
 import ThemeToggleButton, { ThemeLabel } from './ThemeToggleButton';
 
 it(`should get the current theme from ThemeContext as button's data-theme attribute`, () => {
@@ -52,6 +53,7 @@ it(`should render ${iconIds.Sun} icon when current theme is ${ThemeType.Dark}`, 
   render(<ThemeWrapper><ThemeToggleButton /></ThemeWrapper>);
   const button = screen.getByRole('button');
   fireEvent.click(button);
+  expect(button.getAttribute('data-theme')).toBe(ThemeType.Dark);
   const icon = screen.getByRole('icon');
   expect(icon).toBeInTheDocument();
   const use = icon.firstChild! as SVGUseElement;

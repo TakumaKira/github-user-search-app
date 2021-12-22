@@ -1,7 +1,12 @@
-.headerContainer
+@import '../services/responsive'
+@import '../theme/theme'
+
+.container
   display: flex
   justify-content: space-between
   align-items: center
+  @include switchByScreenWidth(margin-top, 31px, 140px, 144px)
 
 .title
+  @extend h1
   color: var(--color-strong)

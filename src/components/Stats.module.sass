@@ -1,0 +1,33 @@
+@import '../services/grid'
+@import '../services/responsive'
+
+.columnsContainer
+  @include column
+  background: var(--color-background)
+  @include switchByScreenWidth(padding-top, 18px, 15px, 15px)
+  @include switchByScreenWidth(padding-bottom, 19px, 17px, 17px)
+  @include switchByScreenWidth(border-radius, 10px, 15px, 15px)
+
+  &[data-responsive-type='mobile']
+    justify-content: center
+
+.repos
+  &[data-responsive-type='mobile']
+    width: 79px
+
+  &[data-responsive-type='tablet'], &[data-responsive-type='desktop']
+    margin-left: 32px
+
+.followers
+  &[data-responsive-type='mobile']
+    width: 81px
+
+  &[data-responsive-type='tablet'], &[data-responsive-type='desktop']
+    margin-left: 99px
+
+.following
+  &[data-responsive-type='mobile']
+    width: 89px
+
+  &[data-responsive-type='tablet'], &[data-responsive-type='desktop']
+    margin-left: 82px
