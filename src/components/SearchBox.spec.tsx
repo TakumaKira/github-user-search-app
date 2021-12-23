@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
-import '../services/matchMedia.mock'; // Must be imported before the tested file
+import '../services/matchMedia.mock'; // Must be imported before importing files using ThemeContext or ThemeWrapper
 import { iconIds } from '../config.json';
 import UserWrapper, { UserContext } from '../contexts/UserContext';
 import getIconUrl from '../services/getIconUrl';
