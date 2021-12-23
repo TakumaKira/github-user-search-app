@@ -13,7 +13,7 @@ function Stat({title, value, className}: {title: string, value: number | null, c
   return (
     <div
       role='group'
-      className={`${styles.rowsContainer} ${className}`}
+      className={`${styles.rowsContainer} ${className || ''}`}
       data-responsive-type={responsiveType}
     >
       <Text

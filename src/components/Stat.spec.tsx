@@ -7,17 +7,17 @@ import Stat from './Stat';
 
 let realUseContext: <T>(context: React.Context<T>) => T;
 let mockUseContext: jest.Mock<any, any>;
+const theme = ThemeType.Dark;
 beforeEach(() => {
     realUseContext = React.useContext;
     mockUseContext = React.useContext = jest.fn();
+    mockUseContext.mockReturnValue({theme});
 });
 afterEach(() => {
     React.useContext = realUseContext;
 });
 
 it(`should render title and value with data-theme attribute`, () => {
-  const theme = ThemeType.Dark;
-  mockUseContext.mockReturnValue({theme});
   const title = 'a';
   const value = 1;
   render(<Stat title={title} value={value} />);
@@ -30,8 +30,6 @@ it(`should render title and value with data-theme attribute`, () => {
 });
 
 it(`should pass className and data-responsive-type attribute to container`, () => {
-  const theme = ThemeType.Dark;
-  mockUseContext.mockReturnValue({theme});
   const mockUseResponsiveType = jest.spyOn(useResponsiveType, 'default');
   const responsiveType = useResponsiveType.ResponsiveType.Tablet;
   mockUseResponsiveType.mockReturnValue(responsiveType);
@@ -40,4 +38,10 @@ it(`should pass className and data-responsive-type attribute to container`, () =
   const container = screen.getByRole('group');
   expect(container.getAttribute('class')?.split(' ')).toContain(className);
   expect(container.getAttribute('data-responsive-type')).toBe(responsiveType);
+});
+
+it(`should render empty string if value is null`, () => {
+  render(<Stat title={'a'} value={null} />);
+  const container = screen.getByRole('group');
+  expect(container.children[1].textContent).toBe('');
 });

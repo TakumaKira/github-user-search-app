@@ -4,7 +4,7 @@ function AvatarImage({src, size, className}: {src: string | null, size: number, 
   return (
     <div
       role='group'
-      className={`${styles.wrapper} ${className}`}
+      className={`${styles.wrapper} ${className || ''}`}
       style={{height: size, width: size}}
     >
       {src && 

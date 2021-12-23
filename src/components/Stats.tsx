@@ -13,7 +13,7 @@ function Stats({repos, followers, following, className}: {repos: number | null, 
 
   return (
     <div
-      className={`${styles.columnsContainer} ${className}`}
+      className={`${styles.columnsContainer} ${className || ''}`}
       data-responsive-type={responsiveType}
     >
       <Stat

@@ -3,7 +3,7 @@ import styles from './Text.module.sass';
 function Text({ text, className, linkUrl, ...props }: { text: string, className?: string, linkUrl?: string | null }) {
   return (linkUrl
     ? <a
-        className={`${styles.link} ${className}`}
+        className={`${styles.link} ${className || ''}`}
         {...props}
         href={linkUrl}
         target='_blank'
@@ -12,7 +12,7 @@ function Text({ text, className, linkUrl, ...props }: { text: string, className?
         {text}
       </a>
     : <span
-        className={className}
+        className={className || ''}
         {...props}
       >
         {text}

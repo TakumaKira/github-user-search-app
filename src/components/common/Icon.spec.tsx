@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { iconIds } from '../../config.json';
 import getIconUrl from '../../services/getIconUrl';
 import Icon from './Icon';
 
-it(`should render ${iconIds.Search} icon`, () => {
+it(`should render icon with id`, () => {
   const iconId = 'a';
   render(<Icon iconId={iconId} />);
   const icon = screen.getByRole('icon');
@@ -17,5 +16,11 @@ it(`should pass className prop to inside SVG`, () => {
   const className = 'a';
   render(<Icon iconId='id' className={className} />);
   const svg = screen.getByRole('icon');
-  expect(svg.getAttribute('class')).toBe(className);
+  expect(svg.getAttribute('class')?.split(' ')).toContain(className);
+});
+
+it(`should not add class "undefined" to inside SVG if passed class name is undefined`, () => {
+  render(<Icon iconId='id' />);
+  const svg = screen.getByRole('icon');
+  expect(svg.getAttribute('class')?.split(' ')).not.toContain('undefined');
 });
