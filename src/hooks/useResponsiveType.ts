@@ -8,8 +8,6 @@ export enum ResponsiveType {
 }
 
 function getResponsiveType(width: number): ResponsiveType {
-  if (typeof width !== 'number')
-    throw new Error(`input width should be number, but it was ${typeof width}`);
   if (width < responsiveBreakPointWidth.mobileTablet)
     return ResponsiveType.Mobile;
   if (width < responsiveBreakPointWidth.tabletDesktop)

@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { iconIds } from '../../config.json';
 import getIconUrl from '../../services/getIconUrl';
 import Icon from './Icon';
 
-it(`should render ${iconIds.Search} icon`, () => {
+it(`should render icon with id`, () => {
   const iconId = 'a';
   render(<Icon iconId={iconId} />);
   const icon = screen.getByRole('icon');
