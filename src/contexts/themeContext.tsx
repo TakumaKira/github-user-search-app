@@ -5,14 +5,15 @@ export enum ThemeType {
   Dark = 'dark',
 }
 
-const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const IS_DEFAULT_DARK = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
 export const ThemeContext = React.createContext({
-  theme: defaultDark ? ThemeType.Dark : ThemeType.Light,
+  theme: IS_DEFAULT_DARK ? ThemeType.Dark : ThemeType.Light,
   toggleTheme: () => {}
 });
 
 const ThemeWrapper = (props: any) => {
-  const [theme, setTheme] = React.useState(defaultDark ? ThemeType.Dark : ThemeType.Light);
+  const [theme, setTheme] = React.useState(IS_DEFAULT_DARK ? ThemeType.Dark : ThemeType.Light);
 
   function toggleTheme() {
     setTheme(theme === ThemeType.Dark ? ThemeType.Light : ThemeType.Dark);

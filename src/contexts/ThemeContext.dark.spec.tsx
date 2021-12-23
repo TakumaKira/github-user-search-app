@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import '../services/matchMedia.dark.mock'; // Must be imported before the tested file
+import '../services/matchMedia.dark.mock'; // Must be imported before importing files using ThemeContext or ThemeWrapper
 import ThemeWrapper, { ThemeContext, ThemeType } from './ThemeContext';
 
 it(`should provide theme context to child component in default dark is true`, () => {

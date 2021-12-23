@@ -1,5 +1,5 @@
 import ShallowRenderer from 'react-test-renderer/shallow';
-import '../services/matchMedia.mock'; // Must be imported before the tested file
+import '../services/matchMedia.mock'; // Must be imported before importing files using ThemeContext or ThemeWrapper
 import * as useResponsiveType from '../hooks/useResponsiveType';
 import Stat from './Stat';
 import Stats, { labels } from './Stats';
