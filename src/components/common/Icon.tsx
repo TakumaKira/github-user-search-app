@@ -4,7 +4,7 @@ function Icon({className, iconId}: {className?: string, iconId: string}) {
   return (
     <svg
       role='icon'
-      className={className}
+      className={className || ''}
     >
       <use xlinkHref={getIconUrl(iconId)}></use>
     </svg>

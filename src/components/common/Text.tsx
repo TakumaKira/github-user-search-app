@@ -12,7 +12,7 @@ function Text({ text, className, linkUrl, ...props }: { text: string, className?
         {text}
       </a>
     : <span
-        className={className}
+        className={className || ''}
         {...props}
       >
         {text}
