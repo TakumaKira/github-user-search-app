@@ -7,7 +7,7 @@ import styles from './Infos.module.sass';
 function Infos({location, blogUrl, twitterUsername, company, hasColumns, className}: {location: string | null, blogUrl: string | null, twitterUsername: string | null, company: string | null, hasColumns?: boolean, className?: string}) {
   return hasColumns
     ? (
-      <div className={`${styles.columnsContainer} ${className}`}>
+      <div className={`${styles.columnsContainer} ${className || ''}`}>
         <div
           className={styles.rowsContainer}
           style={{width: '50%'}}
@@ -39,7 +39,7 @@ function Infos({location, blogUrl, twitterUsername, company, hasColumns, classNa
     )
     : (
       <div
-        className={`${styles.rowsContainer} ${className}`}
+        className={`${styles.rowsContainer} ${className || ''}`}
       >
         <Info
           iconId={iconIds.Location}
