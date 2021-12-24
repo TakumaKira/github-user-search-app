@@ -10,6 +10,8 @@ import { ThemeContext } from './contexts/ThemeContext';
 import { UserContext } from './contexts/UserContext';
 import getUser from './services/getUser';
 
+export const FAILED_TO_GET_INITIAL_USER = 'Failed to get the initial user.';
+
 function App() {
   const { theme } = React.useContext(ThemeContext);
   const { setUser } = React.useContext(UserContext);
@@ -18,14 +20,14 @@ function App() {
     getUser(
       initUser,
       user => setUser(user),
-      error => console.error('Failed to get the initial user.')
+      error => console.error(FAILED_TO_GET_INITIAL_USER)
     );
   }, []);
 
   return (
     <Wrapper
       className={backgroundStyles.background}
-      data-theme={theme}      
+      data-theme={theme}
     >
       <Wrapper
         className={containerStyles.container}
