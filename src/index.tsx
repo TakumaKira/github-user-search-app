@@ -1,19 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import ThemeWrapper from './contexts/ThemeContext';
-import UserWrapper from './contexts/UserContext';
 import reportWebVitals from './reportWebVitals';
+import ContextsWrapper from './components/ContextsWrapper';
 import './index.sass';
 import './theme/theme.sass';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeWrapper>
-      <UserWrapper>
-        <App />
-      </UserWrapper>
-    </ThemeWrapper>
+    <ContextsWrapper />
   </React.StrictMode>,
   document.getElementById('root')
 );
