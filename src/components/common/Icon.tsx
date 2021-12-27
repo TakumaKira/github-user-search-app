@@ -5,6 +5,7 @@ function Icon({className, iconId}: {className?: string, iconId: string}) {
     <svg
       role='img'
       className={className || ''}
+      aria-label={iconId}
     >
       <use xlinkHref={getIconUrl(iconId)}></use>
     </svg>
