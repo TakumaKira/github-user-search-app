@@ -30,6 +30,7 @@ function App() {
       data-theme={theme}
     >
       <Wrapper
+        role='main'
         className={containerStyles.container}
       >
         <Header />

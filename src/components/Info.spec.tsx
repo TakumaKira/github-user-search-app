@@ -8,7 +8,7 @@ it(`should render icon and info`, () => {
   const iconId = 'a';
   const info = 'b';
   render(<Info iconId={iconId} info={info} />);
-  const icon = screen.getByRole('icon');
+  const icon = screen.getByRole('img');
   expect(icon).toBeInTheDocument();
   const use = icon.firstChild! as SVGUseElement;
   expect(use.getAttributeNS('http://www.w3.org/1999/xlink', 'href')).toBe(getIconUrl(iconId));
