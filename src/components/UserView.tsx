@@ -1,4 +1,5 @@
 import React from 'react';
+import { labels } from '../config.json';
 import { ThemeContext, ThemeType } from '../contexts/ThemeContext';
 import { UserContext } from '../contexts/UserContext';
 import useResponsiveType, { ResponsiveType } from '../hooks/useResponsiveType';
@@ -9,8 +10,6 @@ import Text from './common/Text';
 import Infos from './Infos';
 import Stats from './Stats';
 import styles from './UserView.module.sass';
-
-const NO_BIO = 'This profile has no bio';
 
 export const avatarSizes = {
   MOBILE: 70,
@@ -42,7 +41,7 @@ const UserViewMobile = (user: User, theme: ThemeType): JSX.Element =>
       className={styles.bio}
       data-theme={theme}
       data-responsive-type={ResponsiveType.Mobile}
-      text={user.bio || NO_BIO}
+      text={user.bio || labels.NO_BIO}
     />
     <Stats
       className={styles.stats}
@@ -83,7 +82,7 @@ const UserViewTablet = (user: User, theme: ThemeType): JSX.Element =>
       className={styles.bio}
       data-theme={theme}
       data-responsive-type={ResponsiveType.Tablet}
-      text={user.bio || NO_BIO}
+      text={user.bio || labels.NO_BIO}
     />
     <Stats
       className={styles.stats}
@@ -125,7 +124,7 @@ const UserViewDesktop = (user: User, theme: ThemeType): JSX.Element =>
         className={styles.bio}
         data-theme={theme}
         data-responsive-type={ResponsiveType.Desktop}
-        text={user.bio || NO_BIO}
+        text={user.bio || labels.NO_BIO}
       />
       <Stats
         className={styles.stats}

@@ -1,10 +1,9 @@
 import React from 'react';
+import { labels } from '../config.json';
 import { ThemeContext } from '../contexts/ThemeContext';
 import useResponsiveType from '../hooks/useResponsiveType';
 import Text from './common/Text';
 import styles from './Stat.module.sass';
-
-const NA = '';
 
 function Stat({title, value, className}: {title: string, value: number | null, className?: string}) {
   const { theme } = React.useContext(ThemeContext);
@@ -24,7 +23,7 @@ function Stat({title, value, className}: {title: string, value: number | null, c
       <Text
         className={styles.value}
         data-theme={theme}
-        text={value ? String(value) : NA}
+        text={value ? String(value) : labels.ZERO}
       />
     </div>
   );

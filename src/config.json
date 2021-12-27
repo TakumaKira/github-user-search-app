@@ -18,5 +18,19 @@
   "userpageBaseUrl": {
     "github": "https://github.com",
     "twitter": "https://twitter.com"
+  },
+  "labels": {
+    "LIGHT": "LIGHT",
+    "DARK": "DARK",
+    "PLACEHOLDER_LABEL": "Search GitHub username…",
+    "NO_RESULTS_LABEL": "No results",
+    "SEARCH_BUTTON_LABEL": "Search",
+    "NO_BIO": "This profile has no bio",
+    "EMPTY_STRING": "",
+    "REPOS": "Repos",
+    "FOLLOWERS": "Followers",
+    "FOLLOWING": "Following",
+    "ZERO": "0",
+    "NOT_AVAILABLE": "Not Available"
   }
 }

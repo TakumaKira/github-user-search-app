@@ -1,8 +1,7 @@
+import { labels } from '../config.json';
 import Icon from './common/Icon';
 import Text from './common/Text';
 import styles from './Info.module.sass';
-
-export const NOT_AVAILABLE = 'Not Available';
 
 function Info({iconId, info, linkUrl}: {iconId: string, info: string | null, linkUrl?: string | null}) {
   return (
@@ -16,7 +15,7 @@ function Info({iconId, info, linkUrl}: {iconId: string, info: string | null, lin
       />
       <Text
         className={styles.text}
-        text={info || NOT_AVAILABLE}
+        text={info || labels.NOT_AVAILABLE}
         linkUrl={linkUrl}
       />
     </div>
