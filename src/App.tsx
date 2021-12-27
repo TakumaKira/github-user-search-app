@@ -22,7 +22,7 @@ function App() {
       user => setUser(user),
       error => console.error(FAILED_TO_GET_INITIAL_USER)
     );
-  }, []);
+  }, [setUser]);
 
   return (
     <Wrapper
