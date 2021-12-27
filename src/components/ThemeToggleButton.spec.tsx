@@ -1,9 +1,9 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '../services/matchMedia.mock'; // Must be imported before importing files using ThemeContext or ThemeWrapper
-import { iconIds } from '../config.json';
+import { iconIds, labels } from '../config.json';
 import ThemeWrapper, { ThemeType } from '../contexts/ThemeContext';
 import getIconUrl from '../services/getIconUrl';
-import ThemeToggleButton, { ThemeLabel } from './ThemeToggleButton';
+import ThemeToggleButton from './ThemeToggleButton';
 
 it(`should get the current theme from ThemeContext as button's data-theme attribute`, () => {
   render(<ThemeToggleButton />);
@@ -11,11 +11,11 @@ it(`should get the current theme from ThemeContext as button's data-theme attrib
   expect(button.getAttribute('data-theme')).not.toBe(null);
 });
 
-it(`should render "${ThemeLabel.Dark}" as button label when current theme is ${ThemeType.Light}`, () => {
+it(`should render "${labels.DARK}" as button label when current theme is ${ThemeType.Light}`, () => {
   render(<ThemeToggleButton />);
   const button = screen.getByRole('button');
   expect(button.getAttribute('data-theme')).toBe(ThemeType.Light);
-  const label = screen.getByText(ThemeLabel.Dark);
+  const label = screen.getByText(labels.DARK);
   expect(label).toBeInTheDocument();
 });
 
@@ -40,12 +40,12 @@ it(`should toggle ThemeContext`, () => {
   expect(button.getAttribute('data-theme')).toBe(ThemeType.Light);
 });
 
-it(`should render "${ThemeLabel.Light}" as button label when current theme is ${ThemeType.Dark}`, () => {
+it(`should render "${labels.LIGHT}" as button label when current theme is ${ThemeType.Dark}`, () => {
   render(<ThemeWrapper><ThemeToggleButton /></ThemeWrapper>);
   const button = screen.getByRole('button');
   fireEvent.click(button);
   expect(button.getAttribute('data-theme')).toBe(ThemeType.Dark);
-  const label = screen.getByText(ThemeLabel.Light);
+  const label = screen.getByText(labels.LIGHT);
   expect(label).toBeInTheDocument();
 });
 

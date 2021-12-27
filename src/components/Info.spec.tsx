@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
+import { labels } from '../config.json';
 import getIconUrl from '../services/getIconUrl';
-import Info, { NOT_AVAILABLE } from './Info';
+import Info from './Info';
 import styles from './Info.module.sass';
 
 it(`should render icon and info`, () => {
@@ -16,17 +17,17 @@ it(`should render icon and info`, () => {
   expect(text).toBeInTheDocument();
 });
 
-it(`should render ${NOT_AVAILABLE} if info is null`, () => {
+it(`should render ${labels.NOT_AVAILABLE} if info is null`, () => {
   const iconId = 'a';
   render(<Info iconId={iconId} info={null} />);
-  const text = screen.getByText(NOT_AVAILABLE);
+  const text = screen.getByText(labels.NOT_AVAILABLE);
   expect(text).toBeInTheDocument();
 });
 
-it(`should render ${NOT_AVAILABLE} if info is empty string`, () => {
+it(`should render ${labels.NOT_AVAILABLE} if info is empty string`, () => {
   const iconId = 'a';
   render(<Info iconId={iconId} info={''} />);
-  const text = screen.getByText(NOT_AVAILABLE);
+  const text = screen.getByText(labels.NOT_AVAILABLE);
   expect(text).toBeInTheDocument();
 });
 

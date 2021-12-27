@@ -2,12 +2,12 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import '../services/matchMedia.mock'; // Must be imported before importing files using ThemeContext or ThemeWrapper
-import { iconIds } from '../config.json';
+import { iconIds, labels } from '../config.json';
 import UserWrapper, { UserContext } from '../contexts/UserContext';
+import { nullUser } from '../interfaces/user';
 import getIconUrl from '../services/getIconUrl';
 import getUser from '../services/getUser';
-import { nullUser } from '../interfaces/user';
-import SearchBox, { NO_RESULTS_LABEL, PLACEHOLDER_LABEL, SEARCH_BUTTON_LABEL } from './SearchBox';
+import SearchBox from './SearchBox';
 
 jest.mock('../services/getUser', () => jest.fn());
 
@@ -20,18 +20,18 @@ it(`should render ${iconIds.Search} icon`, () => {
   // TODO: Needs a check if the SVG is actually rendered
 });
 
-it(`should render text input with placeholder "${PLACEHOLDER_LABEL}"`, () => {
+it(`should render text input with placeholder "${labels.PLACEHOLDER_LABEL}"`, () => {
   render(<SearchBox />);
   const input = screen.getByRole('textbox') as HTMLInputElement;
   expect(input).toBeInTheDocument();
-  expect(input.placeholder).toBe(PLACEHOLDER_LABEL);
+  expect(input.placeholder).toBe(labels.PLACEHOLDER_LABEL);
 });
 
 it(`should render search button`, () => {
   render(<SearchBox />);
   const button = screen.getByRole('button');
   expect(button).toBeInTheDocument();
-  expect(button.textContent).toBe(SEARCH_BUTTON_LABEL);
+  expect(button.textContent).toBe(labels.SEARCH_BUTTON_LABEL);
 });
 
 it(`should start searching when inputting some string then enter`, () => {
@@ -43,28 +43,28 @@ it(`should start searching when inputting some string then enter`, () => {
   expect(getUser).toHaveBeenCalled();
 });
 
-it(`should render "${NO_RESULTS_LABEL}" only right after search result is not found`, () => {
+it(`should render "${labels.NO_RESULTS_LABEL}" only right after search result is not found`, () => {
   const mockGetUser = (username: string, onSuccess: (user: any) => void, onError: (error: Error) => void) => {
     onError(new Error('test'));
   };
   (getUser as jest.Mock<any, any>).mockImplementation(mockGetUser);
   render(<SearchBox />);
 
-  const noInputDefault = screen.queryByText(NO_RESULTS_LABEL);
+  const noInputDefault = screen.queryByText(labels.NO_RESULTS_LABEL);
   expect(noInputDefault).toBeNull();
 
   const input = screen.getByRole('textbox') as HTMLInputElement;
   fireEvent.change(input, {target: {value: 'a'}});
-  const noInputBeforeNotFound = screen.queryByText(NO_RESULTS_LABEL);
+  const noInputBeforeNotFound = screen.queryByText(labels.NO_RESULTS_LABEL);
   expect(noInputBeforeNotFound).toBeNull();
 
   const button = screen.getByRole('button');
   fireEvent.click(button);
-  const noInputAfterNotFound = screen.queryByText(NO_RESULTS_LABEL);
+  const noInputAfterNotFound = screen.queryByText(labels.NO_RESULTS_LABEL);
   expect(noInputAfterNotFound).toBeInTheDocument();
 
   fireEvent.change(input, {target: {value: 'b'}});
-  const noInputAfterInputChanged = screen.queryByText(NO_RESULTS_LABEL);
+  const noInputAfterInputChanged = screen.queryByText(labels.NO_RESULTS_LABEL);
   expect(noInputAfterInputChanged).toBeNull();
 });
 

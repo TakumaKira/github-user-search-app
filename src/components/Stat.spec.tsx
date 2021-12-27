@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react';
 import '../services/matchMedia.mock'; // Must be imported before importing files using ThemeContext or ThemeWrapper
+import { labels } from '../config.json';
 import { ThemeType } from '../contexts/ThemeContext';
 import * as useResponsiveType from '../hooks/useResponsiveType';
 import Stat from './Stat';
@@ -40,8 +41,8 @@ it(`should pass className and data-responsive-type attribute to container`, () =
   expect(container.getAttribute('data-responsive-type')).toBe(responsiveType);
 });
 
-it(`should render empty string if value is null`, () => {
+it(`should render "${labels.ZERO}" if value is null`, () => {
   render(<Stat title={'a'} value={null} />);
   const container = screen.getByRole('group');
-  expect(container.children[1].textContent).toBe('');
+  expect(container.children[1].textContent).toBe(labels.ZERO);
 });
