@@ -13,7 +13,7 @@ jest.mock('../services/getUser', () => jest.fn());
 
 it(`should render ${iconIds.Search} icon`, () => {
   render(<SearchBox />);
-  const icon = screen.getByRole('icon');
+  const icon = screen.getByRole('img');
   expect(icon).toBeInTheDocument();
   const use = icon.firstChild! as SVGUseElement;
   expect(use.getAttributeNS('http://www.w3.org/1999/xlink', 'href')).toBe(getIconUrl(iconIds.Search));
