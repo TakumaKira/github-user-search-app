@@ -2,6 +2,7 @@ import ShallowRenderer from 'react-test-renderer/shallow';
 import UserpageTwitter from '../classes/userpageTwitter';
 import { iconIds } from '../config.json';
 import formatUsername from '../services/formatUsername';
+import getUrlFromCompany from '../services/getUrlFromCompany';
 import Info from './Info';
 import Infos from './Infos';
 
@@ -27,7 +28,7 @@ it(`should render 4 Info components when hasColumns is true`, () => {
       linkUrl={twitterUsername ? new UserpageTwitter(twitterUsername).getUrl() : null} />
   );
   expect(subContainer2.children).toContainEqual(
-    <Info iconId={iconIds.Company} info={company} />
+    <Info iconId={iconIds.Company} info={company} linkUrl={getUrlFromCompany(company)} />
   );
 });
 
@@ -51,7 +52,7 @@ it(`should render 4 Info components when hasColumns is falsy`, () => {
       linkUrl={twitterUsername ? new UserpageTwitter(twitterUsername).getUrl() : null} />
   );
   expect(mainContainer.children).toContainEqual(
-    <Info iconId={iconIds.Company} info={company} />
+    <Info iconId={iconIds.Company} info={company} linkUrl={getUrlFromCompany(company)} />
   );
 });
 
@@ -89,5 +90,26 @@ it(`should pass null to Info component for twitter if twitterUsername is null wh
   const mainContainer = result.props;
   expect(mainContainer.children).toContainEqual(
     <Info iconId={iconIds.Twitter} info={null} linkUrl={null} />
+  );
+});
+
+it(`should pass null to Info component for company if company is null when hasColumns is true`, () => {
+  const renderer = ShallowRenderer.createRenderer();
+  renderer.render(<Infos className='className' location='location' blogUrl='blogUrl' twitterUsername='twitterUsername' company={null} hasColumns={true} />);
+  const result = renderer.getRenderOutput();
+  const mainContainer = result.props;
+  const subContainer2 = mainContainer.children[1].props;
+  expect(subContainer2.children).toContainEqual(
+    <Info iconId={iconIds.Company} info={null} linkUrl={null} />
+  );
+});
+
+it(`should pass null to Info component for company if company is null when hasColumns is falsy`, () => {
+  const renderer = ShallowRenderer.createRenderer();
+  renderer.render(<Infos className='className' location='location' blogUrl='blogUrl' twitterUsername='twitterUsername' company={null} />);
+  const result = renderer.getRenderOutput();
+  const mainContainer = result.props;
+  expect(mainContainer.children).toContainEqual(
+    <Info iconId={iconIds.Company} info={null} linkUrl={null} />
   );
 });
