@@ -4,14 +4,19 @@ import formatJoinedDate from '../../src/services/formatJoinedDate';
 import formatUsername from '../../src/services/formatUsername';
 import * as userInit from '../fixtures/userInit.json';
 import * as userNext from '../fixtures/userNext.json';
+import * as userNoName from '../fixtures/userNoName.json';
 
+const NEXT_USER = 'next';
+const NO_NAME_USER = 'noName';
 const NOT_EXISTS_USER = 'notExists';
 
 beforeEach(() => {
   cy.intercept(`${endpointUrl}/users/${initUser}`, { fixture: 'userInit.json' }).as('getUserInit')
   cy.intercept(userInit.avatar_url, { fixture: 'images/init.png' }).as('getUserInitAvatarImage')
-  cy.intercept(`${endpointUrl}/users/next`, { fixture: 'userNext.json' }).as('getUserNext')
+  cy.intercept(`${endpointUrl}/users/${NEXT_USER}`, { fixture: 'userNext.json' }).as('getUserNext')
   cy.intercept(userNext.avatar_url, { fixture: 'images/next.png' }).as('getUserNextAvatarImage')
+  cy.intercept(`${endpointUrl}/users/${NO_NAME_USER}`, { fixture: 'userNoName.json' }).as('getUserNoName')
+  cy.intercept(userNoName.avatar_url, { fixture: 'images/noName.png' }).as('getUserNoNameAvatarImage')
   cy.intercept(`${endpointUrl}/users/${NOT_EXISTS_USER}`, { statusCode: 404 }).as('getUserNotExists')
   cy.visit('http://localhost:3000/', {
     onBeforeLoad (win) {
@@ -73,7 +78,7 @@ it(`should show user with search result`, () => {
 
   cy.get('input')
     .clear()
-    .type('next')
+    .type(NEXT_USER)
   cy.get('button').contains(labels.SEARCH_BUTTON_LABEL)
     .click()
   cy.wait(['@getUserNext', '@getUserNextAvatarImage'])
@@ -264,3 +269,21 @@ function checkDarkStyles() {
   cy.contains(userInit.blog).should('have.css', 'color', 'rgb(255, 255, 255)')
   cy.contains(userInit.company).should('have.css', 'color', 'rgb(255, 255, 255)')
 }
+
+it(`should render username instead of name if name is not provided`, () => {
+  cy.get('input')
+    .clear()
+    .type(NO_NAME_USER)
+  cy.get('button').contains(labels.SEARCH_BUTTON_LABEL)
+    .click()
+  cy.wait(['@getUserNoName', '@getUserNoNameAvatarImage'])
+
+  cy.findAllByText(NO_NAME_USER).should(($na) => {
+    // eslint-disable-next-line jest/valid-expect
+    expect($na).to.have.length(1)
+  })
+  cy.findAllByText(`@${NO_NAME_USER}`).should(($na) => {
+    // eslint-disable-next-line jest/valid-expect
+    expect($na).to.have.length(1)
+  })
+});
