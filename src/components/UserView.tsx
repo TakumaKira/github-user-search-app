@@ -38,7 +38,7 @@ const UserViewMobile = (user: User, theme: ThemeType): JSX.Element =>
       />
     </div>
     <Text
-      className={styles.bio}
+      className={`${styles.bio} ${!user.bio ? styles.disabled : ''}`}
       data-theme={theme}
       data-responsive-type={ResponsiveType.Mobile}
       text={user.bio || labels.NO_BIO}
@@ -79,7 +79,7 @@ const UserViewTablet = (user: User, theme: ThemeType): JSX.Element =>
       />
     </div>
     <Text
-      className={styles.bio}
+      className={`${styles.bio} ${!user.bio ? styles.disabled : ''}`}
       data-theme={theme}
       data-responsive-type={ResponsiveType.Tablet}
       text={user.bio || labels.NO_BIO}
@@ -121,7 +121,7 @@ const UserViewDesktop = (user: User, theme: ThemeType): JSX.Element =>
         hasColumns={true}
       />
       <Text
-        className={styles.bio}
+        className={`${styles.bio} ${!user.bio ? styles.disabled : ''}`}
         data-theme={theme}
         data-responsive-type={ResponsiveType.Desktop}
         text={user.bio || labels.NO_BIO}

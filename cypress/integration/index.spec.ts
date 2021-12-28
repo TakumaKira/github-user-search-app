@@ -270,6 +270,10 @@ function checkDarkStyles() {
   cy.contains(userInit.company).should('have.css', 'color', 'rgb(255, 255, 255)')
 }
 
+it(`should add transparency to bio if it is not provided`, () => {
+  cy.contains(labels.NO_BIO).should('have.css', 'opacity', '0.75')
+});
+
 it(`should render username instead of name if name is not provided`, () => {
   cy.get('input')
     .clear()
