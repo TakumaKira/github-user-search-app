@@ -4,15 +4,25 @@ This is a solution to the [GitHub user search app challenge on Frontend Mentor](
 
 ## Table of contents
 
-- [Overview](#overview)
-  - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Useful resources](#useful-resources)
-- [Author](#author)
+- [Frontend Mentor - GitHub user search app solution](#frontend-mentor---github-user-search-app-solution)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+    - [Useful resources](#useful-resources)
+  - [Author](#author)
+- [Getting Started with Create React App](#getting-started-with-create-react-app)
+  - [Available Scripts](#available-scripts)
+    - [`yarn start`](#yarn-start)
+    - [`yarn test`](#yarn-test)
+    - [`yarn cypress:open`](#yarn-cypressopen)
+    - [`yarn build`](#yarn-build)
+    - [`yarn eject`](#yarn-eject)
+  - [Learn More](#learn-more)
 
 ## Overview
 
@@ -58,13 +68,12 @@ Users should be able to:
 
 - [Building a Switchable Multi-Color Theme using React - Section](https://www.section.io/engineering-education/building-a-switchable-multi-color-theme-with-react/) - This helped me for wrapping up context providers as a single component.
 - [Get viewport/window height in ReactJS - Stack Overflow](https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs) - This helped me for building a custom hook responding to an event.
+- [Mocking methods which are not implemented in JSDOM](https://jestjs.io/docs/manual-mocks#mocking-methods-which-are-not-implemented-in-jsdom) - This helped me for mocking `window.matchMedia` property in unit testing with Jest.
 
 ## Author
 
 - Website - [TakumaKira@GitHub](https://github.com/TakumaKira)
 - Frontend Mentor - [@TakumaKira](https://www.frontendmentor.io/profile/TakumaKira)
-
-
 
 # Getting Started with Create React App
 
