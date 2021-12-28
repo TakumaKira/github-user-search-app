@@ -62,7 +62,8 @@ Users should be able to:
 ### What I learned
 
 - How to build E2E test using Cypress
-- How to use enzyme(shallow and dive is mostly needed) with Jest
+- How to use enzyme(shallow and dive is mostly needed) with Jest\
+**I prepared the tests for all cases I imagined and the unit test coverage is almost 100%**
 
 ### Useful resources
 
