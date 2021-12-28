@@ -1,3 +1,71 @@
+# Frontend Mentor - GitHub user search app solution
+
+This is a solution to the [GitHub user search app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/github-user-search-app-Q09YOgaH6). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+
+## Table of contents
+
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+
+## Overview
+
+### The challenge
+
+Users should be able to:
+
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Search for GitHub users by their username
+- See relevant user information based on their search
+- Switch between light and dark themes
+- **Bonus**: Have the correct color scheme chosen for them based on their computer preferences. _Hint_: Research `prefers-color-scheme` in CSS.
+
+### Screenshot
+
+![](./screenshot.png)
+
+### Links
+
+- Solution URL: [GitHub](https://github.com/TakumaKira/github-user-search-app)
+- Live Site URL: [Netlify](https://gallant-ramanujan-197877.netlify.app/)
+
+## My process
+
+### Built with
+
+- Semantic HTML5 markup(a bit)
+- CSS custom properties
+- Flexbox
+- [React](https://reactjs.org/) - JS library
+- TypeScript
+- Jest
+- Enzyme
+- Cypress
+
+### What I learned
+
+- How to build E2E test using Cypress
+- How to use enzyme(shallow and dive is mostly needed) with Jest
+
+### Useful resources
+
+- [Building a Switchable Multi-Color Theme using React - Section](https://www.section.io/engineering-education/building-a-switchable-multi-color-theme-with-react/) - This helped me for wrapping up context providers as a single component.
+- [Get viewport/window height in ReactJS - Stack Overflow](https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs) - This helped me for building a custom hook responding to an event.
+
+## Author
+
+- Website - [TakumaKira@GitHub](https://github.com/TakumaKira)
+- Frontend Mentor - [@TakumaKira](https://www.frontendmentor.io/profile/TakumaKira)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -16,8 +84,12 @@ You will also see any lint errors in the console.
 
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
+Launches the Jest test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `yarn cypress:open`
+
+Launches the Cypress test runner in the interactive watch mode.
 
 ### `yarn build`
 
