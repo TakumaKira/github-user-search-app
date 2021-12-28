@@ -119,3 +119,32 @@ it(`should pass empty string to Text components if corresponding parameter is nu
     <Text className={styles.username} data-responsive-type={responsiveType} text={''} linkUrl={null} />
   );
 });
+
+it(`should pass username to name Text component if name is null but username is not null when hasColumns is true`, () => {
+  const mockUseResponsiveType = jest.spyOn(useResponsiveType, 'default');
+  const responsiveType = useResponsiveType.ResponsiveType.Tablet;
+  mockUseResponsiveType.mockReturnValue(responsiveType);
+  const username = 'a';
+  const renderer = ShallowRenderer.createRenderer();
+  renderer.render(<BaseInfos name={null} username={username} joinedDate={null} hasColumns={true} />);
+  const result = renderer.getRenderOutput();
+  const mainContainer = result.props;
+  const subContainer = mainContainer.children[0].props;
+  expect(subContainer.children).toContainEqual(
+    <Text className={styles.name} data-responsive-type={responsiveType} text={username} />
+  );
+});
+
+it(`should pass username to name Text component if name is null but username is not null when hasColumns is falsy`, () => {
+  const mockUseResponsiveType = jest.spyOn(useResponsiveType, 'default');
+  const responsiveType = useResponsiveType.ResponsiveType.Tablet;
+  mockUseResponsiveType.mockReturnValue(responsiveType);
+  const username = 'a';
+  const renderer = ShallowRenderer.createRenderer();
+  renderer.render(<BaseInfos name={null} username={username} joinedDate={null} />);
+  const result = renderer.getRenderOutput();
+  const mainContainer = result.props;
+  expect(mainContainer.children).toContainEqual(
+    <Text className={styles.name} data-responsive-type={responsiveType} text={username} />
+  );
+});

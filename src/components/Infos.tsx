@@ -1,6 +1,7 @@
 import UserpageTwitter from '../classes/userpageTwitter';
 import { iconIds } from '../config.json';
 import formatUsername from '../services/formatUsername';
+import getUrlFromCompany from '../services/getUrlFromCompany';
 import Info from './Info';
 import styles from './Infos.module.sass';
 
@@ -9,8 +10,7 @@ function Infos({location, blogUrl, twitterUsername, company, hasColumns, classNa
     ? (
       <div className={`${styles.columnsContainer} ${className || ''}`}>
         <div
-          className={styles.rowsContainer}
-          style={{width: '50%'}}
+          className={`${styles.rowsContainer} ${styles.sideBySide}`}
         >
           <Info
             iconId={iconIds.Location}
@@ -33,6 +33,7 @@ function Infos({location, blogUrl, twitterUsername, company, hasColumns, classNa
           <Info
             iconId={iconIds.Company}
             info={company}
+            linkUrl={company ? getUrlFromCompany(company) : null}
           />
         </div>
       </div>
@@ -58,6 +59,7 @@ function Infos({location, blogUrl, twitterUsername, company, hasColumns, classNa
         <Info
           iconId={iconIds.Company}
           info={company}
+          linkUrl={company ? getUrlFromCompany(company) : null}
         />
       </div>
     )

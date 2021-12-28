@@ -15,7 +15,7 @@ function BaseInfos({name, username, joinedDate, hasColumns}: {name: string | nul
         <Text
           className={styles.name}
           data-responsive-type={responsiveType}
-          text={name || labels.EMPTY_STRING}
+          text={name || username || labels.EMPTY_STRING}
         />
         <Text
           className={styles.joinedDate}
@@ -35,7 +35,7 @@ function BaseInfos({name, username, joinedDate, hasColumns}: {name: string | nul
       <Text
         className={styles.name}
         data-responsive-type={responsiveType}
-        text={name || labels.EMPTY_STRING}
+        text={name || username || labels.EMPTY_STRING}
       />
       <Text
         className={styles.username}
